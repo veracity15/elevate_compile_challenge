@@ -1,0 +1,19 @@
+[project]
+name = "tiff-viewer"
+version = "0.0.1"
+description = "Simple Flask app for viewing TIFF images"
+requires-python = ">=3.9"
+dependencies = [
+    "flask>=3.1.0",
+    "pillow>=11.2.1",
+]
+ 
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+ 
+[build-system]
+requires = ["setuptools>=75.6.0", "wheel>=0.45.1"]
+build-backend = "setuptools.build_meta"
+
