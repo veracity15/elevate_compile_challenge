@@ -16,6 +16,6 @@ COPY --link . /app
 WORKDIR /app
 
 # TODO: Figure out why pillow fails to compile
-RUN python3 -m pip install --no-binary pillow .[dev]
+RUN python3 -m pip install --no-binary Pillow .[dev]
 
 CMD ["pytest", "src/test_app.py"]
