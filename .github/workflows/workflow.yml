@@ -14,4 +14,4 @@ jobs:
       run: docker build . --file Dockerfile --tag testing-image:$(date +%s)
 
     - name: Run tests inside container
-      run: docker run -rm --name test_container -v ${{github.workspace}}:/app testing-image pytest src/test_app.py
+      run: docker run --rm --name test_container -v ${{github.workspace}}:/app testing-image
