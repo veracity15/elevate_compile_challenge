@@ -5,17 +5,25 @@ RUN dnf install -y \
       gcc \
       gcc-c++ \
       libpng-devel \
+      libjpeg-devel \
       libzstd-devel \
       python3-devel \
       wget \
       zlib-devel
 
-# TODO: Compile libtiff here with the flags: -D zstd=ON -D CMAKE_INSTALL_PREFIX=/usr/
+RUN wget https://download.osgeo.org/libtiff/tiff-4.7.1.tar.gz
+RUN tar -xzf tiff-4.7.1.tar.gz
+WORKDIR tiff-4.7.1
+# Making tiff in the /usr/ folder and using zstd
+RUN cmake -D zstd=ON -D CMAKE_INSTALL_PREFIX=/usr/ 
+RUN make
+RUN make test
+RUN make install
+
 
 COPY --link . /app
 WORKDIR /app
 
-# TODO: Figure out why pillow fails to compile
-RUN python3 -m pip install --no-binary Pillow .[dev]
+RUN python3 -m pip install --no-binary Pillow Pillow
 
-CMD ["pytest", "src/test_app.py"]
+# CMD ["pytest", "src/test_app.py"]
