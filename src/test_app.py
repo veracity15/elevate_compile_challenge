@@ -30,6 +30,12 @@ def app():
 def client(app):
     return app.test_client()
 
+# Used to test the testing framework
+def test_false(client):
+    if os.getenv("DEBUG_RETURN_FALSE"):
+	    assert False
+    else:
+	    assert True
 
 def test_show_image_has_content(client):
     response = client.get("/image/show")
