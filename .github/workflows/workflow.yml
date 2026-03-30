@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag testing-image:$(date +%s)
+      run: docker build . --file Dockerfile -t testing-image
 
     - name: Run tests inside container
       run: docker run --rm --name test_container -v ${{github.workspace}}:/app testing-image
