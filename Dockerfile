@@ -26,4 +26,4 @@ WORKDIR /app
 
 RUN python3 -m pip install --no-binary Pillow Pillow
 
-# CMD ["pytest", "src/test_app.py"]
+CMD ["pytest", "src/test_app.py"]
