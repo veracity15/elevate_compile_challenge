@@ -1,0 +1,17 @@
+name: Docker Image CI
+
+on: workflow_dispatch 
+
+jobs:
+
+  build_and_test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile -t testing-image
+
+    - name: Run tests inside container
+      run: docker run --rm --name test_container -e DEBUG_RETURN_FALSE=False -v ${{github.workspace}}:/app testing-image
