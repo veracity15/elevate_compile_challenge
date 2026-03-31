@@ -25,6 +25,6 @@ COPY --link . /app
 WORKDIR /app
 
 RUN python3 -m pip install --no-binary Pillow Pillow
-RUN python3 -m pip install Flask pytest 
+RUN python3 -m pip install Flask pytest os
 
 CMD ["pytest", "src/test_app.py"]
