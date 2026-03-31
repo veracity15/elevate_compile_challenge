@@ -1,5 +1,5 @@
 import hashlib
-
+import os
 import pytest
 import struct
 from io import BytesIO
