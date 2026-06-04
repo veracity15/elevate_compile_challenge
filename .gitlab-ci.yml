@@ -1,0 +1,12 @@
+stages:
+  - test
+
+include:
+  - template: Jobs/SAST.gitlab-ci.yml
+
+variables:
+  GITLAB_ADVANCED_SAST_ENABLED: 'true'
+
+sast:
+  tags:
+    - office-local
